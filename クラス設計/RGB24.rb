@@ -1,13 +1,18 @@
 # frozen_string_literal: true
+
+# RGB24という名前のクラスを作成します。クラスはオブジェクトの設計図のようなものです。
 class RGB24 
+  # attr_accessorを使用して、red, green, blueという名前の公開された（public）変数を定義します。
   attr_accessor :red, :green, :blue
   
+  # initializeメソッドは、クラスのコンストラクタです。インスタンスを初期化します。
   def initialize(red, green, blue)
     @red = red
     @green = green
     @blue = blue
   end
 
+  # get_hexメソッドは、red, green, blueの値を16進数に変換し、それらを連結した文字列を返します。
   def get_hex
     hex = format('%02x', @red)
     hex += format('%02x', @green)
@@ -15,6 +20,7 @@ class RGB24
     hex
   end
   
+  # get_bitsメソッドは、red, green, blueの値をそれぞれ8ビットの2進数に変換し、それらを連結した文字列を返します。
   def get_bits
     bits = format('%08b', @red)
     bits += format('%08b', @green)
@@ -22,6 +28,7 @@ class RGB24
     bits
   end
 
+  # greatest_colorメソッドは、RGBの値を比較し、最も大きな値を持つ色を返します。値が同じ場合はnilを返します。
   def greatest_color
     if @red > @green && @red > @blue
       @red
@@ -34,6 +41,7 @@ class RGB24
     end
   end
 
+  # get_color_shadeメソッドは、greatest_colorメソッドを使用して最も大きな色の名前を返します。値が同じ場合は「gray」を返します。
   def get_color_shade
     color = greatest_color
     if color == @red
